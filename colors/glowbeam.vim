@@ -86,6 +86,7 @@ vim.g.colors_name = 'glowbeam'
 local black       = {'#141414', 0,   'black'}
 local gray        = {'#808080', 244, 'gray'}
 local gray_dark   = {'#353535', 236, 'darkgrey'}
+local gray_darkest= {'#242424', 236, 'darkgrey'}
 local gray_darker = {'#505050', 244, 'gray'}
 local gray_light  = {'#c0c0c0', 251, 'gray'}
 local white       = {'#ffffff', 15,  'white'}
@@ -220,7 +221,7 @@ local highlight_groups = {
 	Comment     = {fg=gray, style='italic'},
 	NonText     = {fg=gray_darker},
 	EndOfBuffer = 'NonText',
-	Whitespace  = 'NonText',
+	Whitespace  = {fg=gray_darkest},
 
 	--[[ 4.1.1. Literals]]
 	Constant  = {fg=orange_light},
@@ -273,7 +274,7 @@ local highlight_groups = {
 	Todo              = {fg=yellow,   style={'bold', 'underline'}},
 	helpHyperTextJump = 'Underlined',
 	helpSpecial       = 'Function',
-	Hint              = {bg=magenta,    fg=black, style='bold'},
+	Hint              = {fg=tan,    style='italic'},
 	Info              = {fg=ice, style='italic'},
 	Warning           = {fg=orange_light},
 
@@ -294,7 +295,8 @@ local highlight_groups = {
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	--Conceal={}
 	CursorLine      = {bg=gray_dark},
-	CursorLineNr    = {bg=gray_dark, fg=ice},
+	-- CursorLineNr    = {bg=gray_dark, fg=ice},
+	CursorLineNr    = {bg=black, fg=ice},
 	debugBreakpoint = 'ErrorMsg',
 	debugPC         = 'ColorColumn',
 	LineNr          = {fg=gray},
@@ -335,7 +337,7 @@ local highlight_groups = {
 	SignColumn  = {},
 
 	--[[ 4.2.10. Messages]]
-	ErrorMsg   = {fg=red,          style='bold'},
+	ErrorMsg   = {fg=red,          style='italic'},
 	HintMsg    = {fg=magenta,      style='bold'},
 	InfoMsg    = {fg=ice,          style='italic'},
 	ModeMsg    = {fg=yellow},

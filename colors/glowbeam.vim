@@ -31,6 +31,8 @@ local cyan      = {'#46D9FF', 0, ''}
 local dark_cyan = {'#5699AF', 0, ''}
 local white     = {'#efefef', 0, ''}
 
+local accent = blue
+
 local bg = {
 	main       = {'#141414', 0, ''},
 	alt        = {'#21242b', 0, ''},
@@ -60,12 +62,7 @@ local fg = {
 	widget    = bg.main,
 	conceal   = base4,
 	subtle    = base1,
-	highlight = TODO
-}
-
-local highlight = {
-	primary = blue,
-	secondary = base0
+	highlight = base0
 }
 
 local tag = TODO
@@ -161,7 +158,7 @@ local highlight_groups = {
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	--Conceal={}
 	CursorLine      = {bg=night},
-	CursorLineNr    = {bg=black, fg=highlight.primary},
+	CursorLineNr    = {bg=black, fg=accent},
 	debugBreakpoint = 'ErrorMsg',
 	debugPC         = 'ColorColumn',
 	LineNr          = {fg=base4, bg=bg.widget},
@@ -172,7 +169,7 @@ local highlight_groups = {
 	--[[ 4.2.4. Popup Menu]]
 	Pmenu      = {fg=fg.main, bg=bg.popup},
 	PmenuSbar  = {bg=bg.alt},
-	PmenuSel   = {fg=highlight.secondary, bg=highlight.primary},
+	PmenuSel   = {fg=fg.highlight, bg=accent},
 	PmenuThumb = {bg=bg.scroll},
 	WildMenu   = {fg=fg.main, bg=bg.selection},
 
@@ -184,7 +181,7 @@ local highlight_groups = {
 	DiffAdd    = {fg=green},
 	DiffChange = {fg=yellow},
 	DiffDelete = {fg=red},
-	DiffText   = {style='inverse'}, -- TODO STILL
+	DiffText   = {style='inverse'}, -- TODO
 
 	--[[ 4.2.7. Searching]]
 	IncSearch  = {fg=bg.search, style='underline'},
@@ -525,7 +522,7 @@ local highlight_groups = {
 	-- Bufferlines
 	BufferCurrent    = {fg=base9, bg=bg.current},
 	BufferCurrentMod = {fg=yellow, bg=bg.current},
-	BufferCurrentSign = {fg=blue, bg=bg.current},
+	BufferCurrentSign = {fg=accent, bg=bg.current},
 	BufferVisible    = {fg=base8, bg=bg.bufferline.visible},
 	BufferVisibleMod = {fg=yellow, bg=bg.bufferline.visible},
 	BufferVisibleSign = {fg=base8, bg=bg.bufferline.visible},
@@ -570,6 +567,8 @@ local highlight_groups = {
 	TSStringRegex  = 'SpecialChar',
 	TSURI = 'Tag',
 	TSVariableBuiltin = 'Keyword',
+	TSProperty = {fg=red},
+	Parameter = {fg=green}
 }
 
 local terminal_ansi_colors = {

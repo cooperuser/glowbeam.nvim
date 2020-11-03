@@ -500,6 +500,7 @@ local highlight_groups = {
 	ALEWarningSign = 'WarningMsg',
 
 	--[[ 4.4.2. coc.nvim ]]
+	CocHighlightText    = {bg=base2},
 	CocErrorHighlight   = {style={'underline'}},
 	CocHintHighlight    = {style={'underline'}},
 	CocInfoHighlight    = {style={'underline'}},

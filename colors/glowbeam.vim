@@ -119,7 +119,7 @@ local highlight_groups = {
 
 	--[[ 4.1.6. Edge Cases]]
 	Special        = {fg=violet},
-	SpecialChar    = {fg=base8, style='bold'},
+	SpecialChar    = {fg=yellow, style='bold'},
 	SpecialKey     = {fg=base4},
 	Tag            = {fg=dark_cyan},
 	Delimiter      = {fg=fg.main},

@@ -570,7 +570,7 @@ local highlight_groups = {
 	TSURI = 'Tag',
 	TSVariableBuiltin = 'Keyword',
 	TSProperty = {fg=red},
-	Parameter = {fg=green}
+	Parameter = {fg=teal, style='italic'}
 }
 
 local terminal_ansi_colors = {

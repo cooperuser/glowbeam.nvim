@@ -153,7 +153,7 @@ local highlight_groups = {
 	TabLine     = {fg=base7, bg=bg.alt},
 	TabLineFill = {bg=bg.other},
 	TabLineSel  = {fg=blue, bg=bg.current},
-	Title       = {fg=yellow, style='bold'},
+	Title       = {fg=fg.fold, style='bold'},
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	--Conceal={}

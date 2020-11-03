@@ -320,8 +320,8 @@ local highlight_groups = {
 	goVarDefs               = 'goVarAssign',
 
 	--[[ 4.3.8. HTML ]]
-	htmlArg     = {fg=blue},
-	htmlBold    = {fg=gray_light, style='bold'},
+	htmlArg     = {fg=yellow, style='italic'},
+	htmlBold    = {style='bold'},
 	htmlTitle   = 'Title',
 	htmlEndTag  = 'htmlTag',
 	htmlH1      = 'markdownH1',
@@ -331,10 +331,11 @@ local highlight_groups = {
 	htmlH5      = 'markdownH5',
 	htmlH6      = 'markdownH6',
 	htmlItalic  = {style='italic'},
-	htmlSpecialTagName = 'Keyword',
-	htmlTag     = {fg=gray},
+	htmlSpecialTagName = {fg=magenta},
+	htmlTag     = {fg=base6},
 	htmlTagN    = 'Typedef',
-	htmlTagName = {fg=ice},
+	htmlTagName = {fg=red},
+	htmlLink = {fg=cyan, style={'underline', 'italic'}},
 
 	--[[ 4.3.9. Java ]]
 	javaClassDecl = 'Structure',

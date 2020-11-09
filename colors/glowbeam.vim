@@ -118,7 +118,7 @@ local highlight_groups = {
 	Typedef      = {fg=yellow},
 
 	--[[ 4.1.6. Edge Cases]]
-	Special        = {fg=violet},
+	Special        = {fg=green, style='underline'},
 	SpecialChar    = {fg=yellow, style='bold'},
 	SpecialKey     = {fg=base4},
 	Tag            = {fg=dark_cyan},
@@ -390,7 +390,7 @@ local highlight_groups = {
 	mkdCodeEnd          = 'mkdCodeStart',
 	mkdHeading          = 'Delimiter',
 	mkdItalic           = 'mkdBold',
-	mkdListItem         = 'Special',
+	mkdListItem         = 'Operator',
 	mkdRule             = 'Underlined',
 	texMathMatcher      = 'Number',
 	texMathZoneX        = 'Number',

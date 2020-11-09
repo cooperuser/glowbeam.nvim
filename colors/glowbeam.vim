@@ -65,6 +65,13 @@ local fg = {
 	highlight = base0
 }
 
+local git = {
+	add = {'#36453A', 0, ''},
+	change = {'#36453A', 0, ''},
+	text = {'#35453B', 0, ''},
+	delete = {'#484041', 0, ''}
+}
+
 local tag = TODO
 
 -- local BG   = 'bg'
@@ -178,10 +185,10 @@ local highlight_groups = {
 	Folded     = {bg=BG,  fg=fg.fold, style='italic'},
 
 	--[[ 4.2.6. Diffs]]
-	DiffAdd    = {fg=green},
-	DiffChange = {fg=yellow},
-	DiffDelete = {fg=red},
-	DiffText   = {style='inverse'}, -- TODO
+	DiffAdd    = {bg=git.add},
+	DiffChange = {bg=git.change},
+	DiffDelete = {bg=git.delete},
+	DiffText   = {bg=git.text, style='underline'},
 
 	--[[ 4.2.7. Searching]]
 	IncSearch  = {fg=bg.search, style='underline'},

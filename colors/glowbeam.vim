@@ -42,7 +42,7 @@ local bg = {
 	search     = yellow,
 	widget     = main,
 	statusline = popup,
-	visual     = base5,
+	visual     = base3,
 	selection  = dark_blue,
 	current    = main,
 	visible    = main,
@@ -163,7 +163,7 @@ local highlight_groups = {
 	debugPC         = 'ColorColumn',
 	LineNr          = {fg=base4, bg=bg.widget},
 	QuickFixLine    = {bg=TODO},
-	Visual          = {bg=bg.visual},
+	Visual          = {bg=bg.visual, style='nocombine'},
 	VisualNOS       = {bg=TODO},
 
 	--[[ 4.2.4. Popup Menu]]

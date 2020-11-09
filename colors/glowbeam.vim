@@ -380,7 +380,7 @@ local highlight_groups = {
 	markdownH1          = {fg=red, style='bold'},
 	markdownH2          = {fg=orange, style='bold'},
 	markdownH3          = {fg=yellow, style='bold'},
-	markdownH4          = {fg=green_dark, style='bold'},
+	markdownH4          = {fg=green, style='bold'},
 	markdownH5          = {fg=cyan, style='bold'},
 	markdownH6          = {fg=magenta, style='bold'},
 	mkdBold             = 'SpecialComment',

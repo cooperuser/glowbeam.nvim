@@ -125,7 +125,7 @@ local highlight_groups = {
 	Typedef      = {fg=yellow},
 
 	--[[ 4.1.6. Edge Cases]]
-	Special        = {fg=green, style='underline'},
+	Special        = {fg=orange},
 	SpecialChar    = {fg=yellow, style='bold'},
 	SpecialKey     = {fg=base4},
 	Tag            = {fg=dark_cyan},
@@ -577,7 +577,9 @@ local highlight_groups = {
 	TSURI = 'Tag',
 	TSVariableBuiltin = 'Keyword',
 	TSProperty = {fg=red},
-	Parameter = {fg=teal, style='italic'}
+	Parameter = {fg=teal, style='italic'},
+
+	TelescopeMatching = {fg=red, style='underline'}
 }
 
 local terminal_ansi_colors = {

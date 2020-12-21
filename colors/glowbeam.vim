@@ -141,7 +141,7 @@ local highlight_groups = {
 	Error             = {fg=red, style='italic'},
 	Success           = {fg=green, style='italic'},
 	Muted             = {fg=base7, style='italic'},
-	Todo              = {fg=yellow,   style={'bold', 'underline', 'nocombine'}},
+	Todo              = {fg=fg.fold, style={'italic'}},
 	helpHyperTextJump = 'Underlined',
 	helpSpecial       = 'Function',
 	Hint              = 'Special',
@@ -169,8 +169,8 @@ local highlight_groups = {
 	debugBreakpoint = 'ErrorMsg',
 	debugPC         = 'ColorColumn',
 	LineNr          = {fg=base4, bg=bg.widget},
-	QuickFixLine    = {bg=TODO},
-	Visual          = {bg=bg.visual, style='nocombine'},
+	QuickFixLine    = {bg=bg.visual},
+	Visual          = {bg=bg.visual},
 	VisualNOS       = {bg=TODO},
 
 	--[[ 4.2.4. Popup Menu]]

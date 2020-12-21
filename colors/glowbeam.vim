@@ -594,24 +594,25 @@ local highlight_groups = {
 	TelescopeMatching = {fg=red, style='underline'}
 }
 
-local terminal_ansi_colors = {
-	[1]  = black,
-	[2]  = {'#a80000', 124, 'darkred'},
-	[3]  = {'#50de60', 83, 'darkgreen'},
-	[4]  = orange,
-	[5]  = blue,
-	[6]  = {'#bb0099', 126, 'darkmagenta'},
-	[7]  = teal,
-	[8]  = gray,
-	[9]  = base4,
-	[10] = red,
-	[11] = green,
-	[12] = yellow,
-	[13] = {'#2bff99', 33, 'blue'},
-	[14] = purple,
-	[15] = cyan,
-	[16] = base8
-}
+terminal_ansi_colors = {}
+-- local terminal_ansi_colors = {
+-- 	[0]  = '#000000',
+-- 	[1]  = '#fc2c1d',
+-- 	[2]  = '#2fcc70',
+-- 	[3]  = '#f1c40c',
+-- 	[4]  = '#3398db',
+-- 	[5]  = '#6170c4',
+-- 	[6]  = '#0095de',
+-- 	[7]  = '#dee2ea',
+-- 	[8]  = '#666666',
+-- 	[9] = '#e74b3b',
+-- 	[10] = '#07d773',
+-- 	[11] = '#f6c700',
+-- 	[12] = '#0095de',
+-- 	[13] = '#6667c6',
+-- 	[14] = '#0092e2',
+-- 	[15] = '#ffffff'
+-- }
 
 --[[ NOTHING INSIDE THIS FILE NEEDS TO BE EDITED BY THE USER. ]]
 local vim = vim

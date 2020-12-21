@@ -539,6 +539,18 @@ local highlight_groups = {
 	BufferInactiveMod = {fg=yellow, bg=bg.other},
 	BufferInactiveSign = {fg=base4, bg=bg.other},
 
+	-- nvim-tree-lua
+	LuaTreeIndentMarker = 'Whitespace',
+	LuaTreeFolderIcon = {fg=blue},
+	LuaTreeFolderName = {style='nocombine'},
+	LuaTreeFileDirty = {fg=yellow, style='italic'},
+	LuaTreeGitStaged = {fg=green, style='italic'},
+	LuaTreeGitNew = {fg=blue, style='italic'},
+	LuaTreeGitMerge = {fg=blue, style='italic'},
+	LuaTreeGitRenamed = {fg=red, style='italic'},
+	LuaTreeSpecialFile = {fg=fg.fold, style='underline'},
+	LuaTreeImageFile = {fg=fg.main},
+
 	--[[ 4.4.2. vim-jumpmotion / vim-easymotion ]]
 	EasyMotion = 'IncSearch',
 	JumpMotion = 'EasyMotion',

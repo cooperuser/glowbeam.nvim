@@ -32,11 +32,6 @@ local cyan      = {'#46D9FF', 0, ''}
 local dark_cyan = {'#5699AF', 0, ''}
 local white     = {'#efefef', 0, ''}
 
-local diag = {
-	red = {'#ff0000', 0, ''},
-	orange = {'#ff8800', 0, ''}
-}
-
 local accent = blue
 
 local bg = {
@@ -44,9 +39,8 @@ local bg = {
 	alt        = {'#21242b', 0, ''},
 	highlight  = {'#242424', 0, ''},
 	popup      = base1,
-	-- popup      = {'#3e4556', 0, ''},
 	scroll     = base9,
-	search     = yellow,
+	search     = {'#322c0e', 0, ''},
 	widget     = main,
 	statusline = popup,
 	visual     = base3,
@@ -68,7 +62,7 @@ local fg = {
 	fold      = {'#f8e71c', 0, ''},
 	widget    = bg.main,
 	conceal   = base4,
-	subtle    = base1,
+	subtle    = base3,
 	highlight = base0
 }
 
@@ -77,6 +71,15 @@ local git = {
 	change = {'#36453A', 0, ''},
 	text = {'#35453B', 0, ''},
 	delete = {'#484041', 0, ''}
+}
+
+local diag = {
+	error = red,
+	warning = orange,
+	info = blue,
+	hint = dark_cyan,
+	success = green,
+	question = yellow
 }
 
 local tag = TODO
@@ -97,7 +100,7 @@ local highlight_groups = {
 	Whitespace  = {fg=fg.subtle},
 
 	--[[ 4.1.1. Literals]]
-	Constant  = {fg=green, style='italic'},
+	Constant  = {fg=green},
 	String    = {fg=green},
 	Character = {fg=green, style='bold'},
 	Number    = {fg=orange},
@@ -143,15 +146,15 @@ local highlight_groups = {
 	Underlined        = {fg=dark_cyan, style='underline'},
 	Ignore            = {fg=base9},
 	Debug             = {fg=green, style='italic'},
-	Info              = {fg=blue},
-	Warning           = {fg=orange},
-	Error             = {fg=red},
-	Success           = {fg=green, style='italic'},
+	Info              = {fg=diag.info},
+	Warning           = {fg=diag.warning},
+	Error             = {fg=diag.error},
+	Hint              = {fg=diag.hint},
+	Success           = {fg=diag.success, style='italic'},
 	Muted             = {fg=base7, style='italic'},
 	Todo              = {fg=fg.fold, style={'italic'}},
-	helpHyperTextJump = 'Underlined',
+	helpHyperTextJump = {fg=dark_cyan},
 	helpSpecial       = 'Function',
-	Hint              = 'Special',
 
 	--[[ 4.2... Editor UI  ]]
 	--[[ 4.2.1. Status Line]]
@@ -172,7 +175,7 @@ local highlight_groups = {
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	--Conceal={}
 	Conceal         = {bg=bg.main},
-	CursorLine      = {bg=night},
+	CursorLine      = {bg=bg.visual},
 	CursorLineNr    = {bg=black, fg=accent},
 	debugBreakpoint = 'ErrorMsg',
 	debugPC         = 'ColorColumn',
@@ -204,12 +207,9 @@ local highlight_groups = {
 	diffText = "DiffText",
 
 	--[[ 4.2.7. Searching]]
-	-- IncSearch  = {fg=bg.search, style='underline'},
-	IncSearch  = {style={'inverse', 'bold'}},
-	-- IncSearch  = {bg=bg.visual},
-	Search  = {style='inverse'},
-	-- Search     = {fg=bg.search, style='underline'},
-	MatchParen = {fg=red},
+	IncSearch  = {bg=bg.search, style={"underline", color=yellow}},
+	Search  = {bg=bg.search},
+	MatchParen = {fg=accent},
 
 	--[[ 4.2.8. Spelling]]
 	SpellBad   = {style={'undercurl', color=red}},
@@ -222,12 +222,12 @@ local highlight_groups = {
 	SignColumn  = {bg=bg.widget},
 
 	--[[ 4.2.10. Messages]]
-	ErrorMsg   = {fg=red,          style='italic'},
-	HintMsg    = {fg=magenta,      style='italic'},
-	InfoMsg    = {fg=blue,          style='italic'},
+	ErrorMsg   = {fg=diag.error,          style='italic'},
+	HintMsg    = {fg=diag.hint,      style='italic'},
+	InfoMsg    = {fg=diag.info,          style='italic'},
 	ModeMsg    = {fg=yellow},
-	WarningMsg = {fg=orange, style='italic'},
-	Question   = {fg=blue},
+	WarningMsg = {fg=diag.warning, style='italic'},
+	Question   = {fg=diag.question},
 
 	--[[ 4.2.11. LSP ]]
 	LspDiagnosticsError = 'Error',
@@ -255,11 +255,14 @@ local highlight_groups = {
 	LspDiagnosticsDefaultError = "Error",
 	LspDiagnosticsDefaultWarning = "Warning",
 	LspDiagnosticsDefaultInformation = "Info",
-	LspDiagnosticsDefaultHint = {fg=magenta},
+	LspDiagnosticsDefaultHint = "Hint",
 
 	--[[ 4.2.12. Cursor ]]
-	Cursor   = {style='inverse'},
-	CursorIM = 'Cursor',
+	Cursor   = {bg={"#95e454"}},
+	CursorIM = {bg={"#87afff"}},
+	CursorRM = {bg={"#ff6c6b"}},
+	CursorVM = {bg={"#f2c68a"}},
+	CursorCM = {bg={"#c678dd"}},
 	CursorColumn = {bg=night},
 
 	--[[ 4.2.13. Misc ]]
@@ -529,30 +532,30 @@ local highlight_groups = {
 
 	--[[ 4.4.2. coc.nvim ]]
 	CocHighlightText    = {bg=base2},
-	CocErrorHighlight   = {style={'underline', color=red}},
-	CocHintHighlight    = {style={'underline', color=purple}},
-	CocInfoHighlight    = {style={'underline', color=blue}},
-	CocWarningHighlight = {style={'underline', color=orange}},
-	CocErrorSign   = {fg=red},
-	CocHintSign    = {fg=magenta},
-	CocInfoSign    = {fg=blue},
-	CocWarningSign = {fg=orange},
+	CocErrorHighlight   = {style={'underline', color=diag.error}},
+	CocHintHighlight    = {style={'underline', color=diag.hint}},
+	CocInfoHighlight    = {style={'underline', color=diag.info}},
+	CocWarningHighlight = {style={'underline', color=diag.warning}},
+	CocErrorSign   = {fg=diag.error},
+	CocHintSign    = {fg=diag.hint},
+	CocInfoSign    = {fg=diag.info},
+	CocWarningSign = {fg=diag.warning},
 	CocErrorVirtualText = 'ErrorMsg',
 	CocHintVirtualText = 'HintMsg',
 	CocInfoVirtualText = 'InfoMsg',
 	CocWarningVirtualText = 'WarningMsg',
-	TablineError = {fg=red, bg=bg.main},
-	TablineHint = {fg=magenta, bg=bg.main},
-	TablineInfo = {fg=blue, bg=bg.main},
-	TablineWarning = {fg=orange, bg=bg.main},
-	TablineSuccess = {fg=green, bg=bg.main},
+	TablineError = {fg=diag.error, bg=bg.main},
+	TablineHint = {fg=diag.hint, bg=bg.main},
+	TablineInfo = {fg=diag.info, bg=bg.main},
+	TablineWarning = {fg=diag.warning, bg=bg.main},
+	TablineSuccess = {fg=diag.success, bg=bg.main},
 	TablineSeparator = {fg=bg.main, bg=bg.other},
 	TablineBlank = {fg=bg.main, bg=bg.main},
-	TablineLightError = {fg=red, bg=bg.status},
-	TablineLightHint = {fg=magenta, bg=bg.status},
-	TablineLightInfo = {fg=blue, bg=bg.status},
-	TablineLightWarning = {fg=orange, bg=bg.status},
-	TablineLightSuccess = {fg=green, bg=bg.status},
+	TablineLightError = {fg=diag.error, bg=bg.status},
+	TablineLightHint = {fg=diag.hint, bg=bg.status},
+	TablineLightInfo = {fg=diag.info, bg=bg.status},
+	TablineLightWarning = {fg=diag.warning, bg=bg.status},
+	TablineLightSuccess = {fg=diag.success, bg=bg.status},
 	TablineLightSeparator = {fg=bg.status, bg=bg.other},
 	TablineLightBlank = {fg=bg.status, bg=bg.main},
 
@@ -580,13 +583,9 @@ local highlight_groups = {
 	LuaTreeImageFile = {fg=fg.main},
 
 	-- Floaterm
-	-- FloatermBorder = {fg=base4},
 	
 	-- Telescope
-	-- TelescopeNormal = {bg=night},
-	-- TelescopeBorder = {fg={"#111111", 0, ''}, bg=dusk, style="bold"},
-	TelescopeBorder = {fg=dusk, bg=NONE},
-	TelescopePreviewLine = {bg=red},
+	TelescopePreviewLine = {bg=bg.search},
 
 	--[[ 4.4.2. vim-jumpmotion / vim-easymotion ]]
 	EasyMotion = 'IncSearch',
@@ -633,7 +632,16 @@ local highlight_groups = {
 	--[[ 4.4.9. quick-scope ]]
 	QuickScopeCursor = {fg=bg.main, bg=green, style="bold"},
 	QuickScopePrimary = {fg=bg.main, bg=yellow},
-	QuickScopeSecondary = {fg=bg.main, bg=red}
+	QuickScopeSecondary = {fg=bg.main, bg=red},
+
+	NvimTreeGitDirty = {fg=blue},
+	NvimTreeGitStaged = {fg=green},
+	NvimTreeGitMerge = {fg=magenta},
+	NvimTreeGitRenamed = {fg=orange},
+	NvimTreeGitNew = {fg=red},
+	NvimTreeSpecialFile = {style="bold"},
+	NvimTreeFolderIcon = {fg=base6},
+	NvimTreeIndentMarker = {fg=base4},
 }
 
 terminal_ansi_colors = {}

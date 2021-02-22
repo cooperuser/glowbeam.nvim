@@ -12,7 +12,7 @@ JetBrains applications' colorschemes.
 This colorscheme used to be created entirely manually, but then a while ago I
 switched to using [`Iron-E/nvim-highlite`](https://github.com/Iron-E/nvim-highlite).
 Now, we have migrated to the amazing [`rktjmp/lush.nvim`](https://github.com/rktjmp/lush.nvim)
-(such an amazing plugin by the way, thank you @rktjmp and community!)
+(such an amazing plugin by the way, thank you [@rktjmp](https://github.com/rktjmp) and community!)
 
 ## Installation
 
@@ -42,5 +42,3 @@ Plug "cooper-anderson/glowbeam.nvim"
 - Because of the recent switch to Lush, I removed a bunch of specifically
 tailored colors for some filetypes, but those should be added back in time
 - So far I have only tested this colorscheme with `termguicolors` enabled
-
-🦑

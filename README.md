@@ -30,8 +30,11 @@ Plug "cooper-anderson/glowbeam.nvim"
 
 ## Screenshots
 
+- A typescript example:
 ![Image #1](./img/glowbeam1.png)
+- Some more typescript:
 ![Image #2](./img/glowbeam2.png)
+- And some html as well:
 ![Image #3](./img/glowbeam3.png)
 
 ## Notes

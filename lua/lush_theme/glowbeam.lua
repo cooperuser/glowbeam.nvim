@@ -1,3 +1,4 @@
+-- Preamble {{{
 --
 -- Built with,
 --
@@ -14,7 +15,8 @@
 --
 -- luacheck: read globals
 --
-
+-- }}}
+-- Color definitions {{{
 local lush = require('lush')
 local hsl = lush.hsl
 
@@ -27,13 +29,14 @@ local teal      = hsl("#4db5bd")
 local blue      = hsl("#51afef")
 local magenta   = hsl("#c678dd")
 local pink      = hsl("#fdb5db")
--- local violet    = hsl("#a9a1e1")
+local violet    = hsl("#a9a1e1")
 local white     = hsl("#bbc2cf")
 local black     = hsl("#141414")
+-- local black     = hsl("#0d1117")
 
 -- local base0     = hsl("#1b2229")
 local base1     = hsl("#1c1f24")
--- local base2     = hsl("#202328")
+local base2     = hsl("#202328")
 local base3     = hsl("#23272e")
 local base4     = hsl("#3f444a")
 local base5     = hsl("#5b6268")
@@ -42,20 +45,13 @@ local base7     = hsl("#9ca0a4")
 local base8     = hsl("#b1b1b1")
 local base9     = hsl("#e6e6e6")
 
+local fold = hsl("#f8e71c")
 local accent = blue
 local special = {
 	red =    hsl("#ff6c6b"),
 	yellow = hsl("#f2c68a"),
 	green =  hsl("#95e454"),
 	blue =   hsl("#87afff")
-}
-
-local groups = {
-	visual = base3,
-	search = hsl("#322c0e"),
-	fold = hsl("#f8e71c"),
-	alt = hsl("#21242b"),
-	status = base1
 }
 
 local git = {
@@ -69,9 +65,10 @@ local diag = {
 	error = red,
 	warning = orange,
 	info = blue,
-	hint = pink,
+	hint = violet,
 	success = green
 }
+-- }}}
 
 local theme = lush(function()
 	return {
@@ -83,17 +80,17 @@ local theme = lush(function()
 		Cursor       {bg=special.green}, -- character under the cursor
 		lCursor      {Cursor}, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
 		CursorIM     {bg=special.blue}, -- like Cursor, but used when in IME mode |CursorIM|
-		CursorLine   {bg=groups.visual}, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-		CursorColumn {CursorLine}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+		CursorRM     {bg=special.red}, -- like Cursor, but used when in RME mode
+		CursorVM     {bg=special.yellow}, -- like Cursor, but used when in RME mode
 		Directory    {fg=blue, gui="bold"}, -- directory names (and other special names in listings)
 		EndOfBuffer  {fg=base4}, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
 		-- TermCursor   {}, -- cursor in a focused terminal
 		-- TermCursorNC {}, -- cursor in an unfocused terminal
 		VertSplit    {fg=base4}, -- the column separating vertically split windows
-		Folded       {fg=groups.fold}, -- line used for closed folds
-		FoldColumn   {fg=groups.fold}, -- 'foldcolumn'
+		Folded       {fg=fold}, -- line used for closed folds
+		FoldColumn   {fg=fold}, -- 'foldcolumn'
 		SignColumn   {bg=black}, -- column where |signs| are displayed
-		IncSearch    {bg=groups.search, gui="underline", sp=yellow}, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		IncSearch    {bg=fold.darken(78), gui="underline", sp=yellow}, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		-- Substitute   {}, -- |:substitute| replacement text highlighting
 		LineNr       {fg=base4}, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		CursorLineNr {fg=accent}, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
@@ -105,8 +102,7 @@ local theme = lush(function()
 		PmenuSbar    {bg=base4}, -- Popup menu: scrollbar.
 		PmenuThumb   {bg=base6}, -- Popup menu: Thumb of the scrollbar.
 		Question     {fg=green}, -- |hit-enter| prompt and yes/no questions
-		QuickFixLine {bg=groups.visual}, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-		Search       {bg=groups.search}, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+		Search       {bg=fold.darken(78)}, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 		SpecialKey   {fg=base5, gui="bold"}, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace| SpellBad  Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.  SpellCap  Word that should start with a capital. |spell| Combined with the highlighting used otherwise.  SpellLocal  Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 
 		SpellBad    {gui="undercurl", sp=red}, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
@@ -121,10 +117,13 @@ local theme = lush(function()
 		TabLineSel   {fg=accent}, -- tab pages line, active tab page label
 
 		Title        {fg=yellow, gui="bold"}, -- titles for output from ":set all", ":autocmd" etc.
-		Visual       {bg=groups.visual}, -- Visual mode selection
+		Visual       {bg=base3.lighten(1)}, -- Visual mode selection
 		VisualNOS    {Visual, fg=red}, -- Visual mode selection when vim is "Not Owning the Selection".
+		CursorLine   {Visual}, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+		CursorColumn {CursorLine}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+		QuickFixLine {Visual}, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		Whitespace   {fg=base3}, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-		NonText      {Whitespace}, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+		NonText      {fg=base6}, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 		-- WildMenu     {}, -- current match in 'wildmenu' completion
 
 		MoreMsg      {fg=green}, -- |more-prompt|
@@ -210,18 +209,10 @@ local theme = lush(function()
 		-- These groups are for the native LSP client. Some other LSP clients may use
 		-- these groups, or use their own. Consult your LSP client's documentation.
 
-		LspDiagnosticsError               {Error}, -- used for "Error" diagnostic virtual text
-		LspDiagnosticsErrorSign           {Error}, -- used for "Error" diagnostic signs in sign column
-		LspDiagnosticsErrorFloating       {Error}, -- used for "Error" diagnostic messages in the diagnostics float
-		LspDiagnosticsWarning             {Warning}, -- used for "Warning" diagnostic virtual text
-		LspDiagnosticsWarningSign         {Warning}, -- used for "Warning" diagnostic signs in sign column
-		LspDiagnosticsWarningFloating     {Warning}, -- used for "Warning" diagnostic messages in the diagnostics float
-		LspDiagnosticsInformation         {Info}, -- used for "Information" diagnostic virtual text
-		LspDiagnosticsInformationSign     {Info}, -- used for "Information" signs in sign column
-		LspDiagnosticsInformationFloating {Info}, -- used for "Information" diagnostic messages in the diagnostics float
-		LspDiagnosticsHint                {Hint}, -- used for "Hint" diagnostic virtual text
-		LspDiagnosticsHintSign            {Hint}, -- used for "Hint" diagnostic signs in sign column
-		LspDiagnosticsHintFloating        {Hint}, -- used for "Hint" diagnostic messages in the diagnostics float
+		LspDiagnosticsDefaultError             {Error}, -- used for "Error" diagnostic text
+		LspDiagnosticsDefaultWarning           {Warning}, -- used for "Warning" diagnostic text
+		LspDiagnosticsDefaultInformation       {Info}, -- used for "Information" diagnostic text
+		LspDiagnosticsDefaultHint              {Hint}, -- used for "Hint" diagnostic text
 		LspReferenceText                  {fg=black, bg=red}, -- used for highlighting "text" references
 		LspReferenceRead                  {fg=black, bg=red}, -- used for highlighting "read" references
 		LspReferenceWrite                 {fg=black, bg=red}, -- used for highlighting "write" references
@@ -238,6 +229,7 @@ local theme = lush(function()
 		-- TSError -> Error for example, so you do not have to define these unless
 		-- you explicitly want to support Treesitter's improved syntax awareness.
 
+		-- Treesitter {{{
 		-- TSError              {Error}, -- For syntax/parser errors.
 		-- TSPunctDelimiter     {}, -- For delimiters ie: `.`
 		-- TSPunctBracket       {}, -- For brackets and parens.
@@ -282,6 +274,7 @@ local theme = lush(function()
 		-- TSURI                {}, -- Any URI like a link or email.
 		-- TSVariable           {}, -- Any variable name that does not have another highlight.
 		-- TSVariableBuiltin    {}, -- Variable names that are defined by the languages, like `this` or `self`.
+		-- }}}
 
 		TabLineSeparator {fg=Normal.bg, bg=TabLineFill.bg},
 		TabLineError     {Error},
@@ -296,6 +289,7 @@ local theme = lush(function()
 		TelescopeSelectionCaret {Visual, fg=magenta},
 		TelescopePreviewLine {Search},
 		TelescopeMatching {IncSearch},
+		TelescopePromptPrefix {fg=magenta},
 
 		NvimTreeGitDirty {fg=blue},
 		NvimTreeGitStaged {fg=green},
@@ -304,8 +298,17 @@ local theme = lush(function()
 		NvimTreeGitNew {fg=red},
 		NvimTreeSpecialFile {gui="bold"},
 		NvimTreeFolderIcon {fg=base6},
-		NvimTreeIndentMarker {fg=base4}
+		NvimTreeIndentMarker {fg=base4},
+
+		QuickScopeCursor {gui="underline bold", sp=special.green},
+		QuickScopePrimary {gui="underline bold", sp=special.yellow},
+		QuickScopeSecondary {gui="underline bold", sp=special.red},
+
+		IndentGuidesOdd {bg=base1.darken(4)},
+		IndentGuidesEven {bg=base1.lighten(2)},
 	}
 end)
 
 return theme
+
+-- vim: foldmethod=marker foldlevel=0

@@ -36,7 +36,7 @@ local black     = hsl("#141414")
 
 -- local base0     = hsl("#1b2229")
 local base1     = hsl("#1c1f24")
-local base2     = hsl("#202328")
+-- local base2     = hsl("#202328")
 local base3     = hsl("#23272e")
 local base4     = hsl("#3f444a")
 local base5     = hsl("#5b6268")

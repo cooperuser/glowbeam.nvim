@@ -8,10 +8,13 @@ function M.setup()
 end
 
 function M.compile()
-	local glowbeam = require("glowbeam")
-	local lush = require("lush")
-	local text = lush.stringify(glowbeam)
-	vim.fn.writefile(vim.split(text, "\n"), "colors/glowbeam.vim")
+	local glowbeam = require("lush").stringify(require("glowbeam"))
+	local lines = vim.split(glowbeam, "\n")
+	local sorted = table.slice(lines, 1, 3)
+	local groups = table.slice(lines, 4)
+	table.sort(groups, function (a, b) return a:lower() < b:lower() end)
+	for _, group in ipairs(groups) do table.insert(sorted, group) end
+	vim.fn.writefile(sorted, "colors/glowbeam.vim")
 end
 
 return M

@@ -8,7 +8,10 @@ function M.setup()
 end
 
 function M.compile()
-	vim.cmd("echo 'compiling'")
+	local glowbeam = require("glowbeam")
+	local lush = require("lush")
+	local text = lush.stringify(glowbeam)
+	vim.fn.writefile(vim.split(text, "\n"), "colors/glowbeam.vim")
 end
 
 return M

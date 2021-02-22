@@ -1,4 +1,4 @@
-# Glowbeam the colorscheme 👉👉
+# Glowbeam the colorscheme 👉 👉
 
 ## About
 
@@ -43,3 +43,4 @@ Plug "cooper-anderson/glowbeam.nvim"
 tailored colors for some filetypes, but those should be added back in time
 - So far I have only tested this colorscheme with `termguicolors` enabled
 
+🦑

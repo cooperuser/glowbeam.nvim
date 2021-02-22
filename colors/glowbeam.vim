@@ -49,6 +49,12 @@ highlight LspReferenceRead guifg=#141414 guibg=#FF6B6B guisp=NONE gui=NONE blend
 highlight LspReferenceText guifg=#141414 guibg=#FF6B6B guisp=NONE gui=NONE blend=NONE
 highlight LspReferenceWrite guifg=#141414 guibg=#FF6B6B guisp=NONE gui=NONE blend=NONE
 highlight Macro guifg=#4CB5BD guibg=NONE guisp=NONE gui=italic blend=NONE
+highlight markdownH1 guifg=#FF6B6B guibg=NONE guisp=NONE gui=bold blend=NONE
+highlight markdownH2 guifg=#DA8549 guibg=NONE guisp=NONE gui=bold blend=NONE
+highlight markdownH3 guifg=#ECBE79 guibg=NONE guisp=NONE gui=bold blend=NONE
+highlight markdownH4 guifg=#97BE64 guibg=NONE guisp=NONE gui=bold blend=NONE
+highlight markdownH5 guifg=#52B0EF guibg=NONE guisp=NONE gui=bold blend=NONE
+highlight markdownH6 guifg=#C678DD guibg=NONE guisp=NONE gui=bold blend=NONE
 highlight MatchParen guifg=#52B0EF guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight MoreMsg guifg=#97BE64 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Muted guifg=#9DA1A4 guibg=NONE guisp=NONE gui=italic blend=NONE
@@ -103,6 +109,8 @@ highlight TelescopeSelectionCaret guifg=#C678DD guibg=#252A31 guisp=NONE gui=NON
 highlight Title guifg=#ECBE79 guibg=NONE guisp=NONE gui=bold blend=NONE
 highlight Todo guifg=#ECBE79 guibg=NONE guisp=NONE gui=underline blend=NONE
 highlight TSParameter guifg=#4CB5BD guibg=NONE guisp=NONE gui=italic blend=NONE
+highlight TSTag guifg=#FF6B6B guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight TSURI guifg=NONE guibg=NONE guisp=#52B0EF gui=underlineitalic blend=NONE
 highlight Type guifg=#ECBE79 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Typedef guifg=#ECBE79 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Underlined guifg=NONE guibg=NONE guisp=NONE gui=underline blend=NONE
@@ -117,6 +125,12 @@ highlight! link Delimiter Normal
 highlight! link ErrorMsg Error
 highlight! link Float Number
 highlight! link HintMsg Hint
+highlight! link htmlH1 markdownH1
+highlight! link htmlH2 markdownH2
+highlight! link htmlH3 markdownH3
+highlight! link htmlH4 markdownH4
+highlight! link htmlH5 markdownH5
+highlight! link htmlH6 markdownH6
 highlight! link Identifier Normal
 highlight! link InfoMsg Info
 highlight! link Label Conditional

@@ -25,7 +25,7 @@ local orange    = hsl("#da8548")
 local yellow    = hsl("#ecbe7b")
 local green     = hsl("#98be65")
 local teal      = hsl("#4db5bd")
--- local cyan      = hsl("#46D9FF")
+local cyan      = hsl("#46D9FF")
 local blue      = hsl("#51afef")
 local magenta   = hsl("#c678dd")
 local pink      = hsl("#fdb5db")
@@ -223,6 +223,19 @@ local theme = lush(function()
     LspDiagnosticsUnderlineWarning    {Underlined, sp=Warning.fg},
     LspDiagnosticsUnderlineHint       {Underlined, sp=Hint.fg},
 
+    markdownH1 {fg=red, gui="bold"},
+    markdownH2 {fg=orange, gui="bold"},
+    markdownH3 {fg=yellow, gui="bold"},
+    markdownH4 {fg=green, gui="bold"},
+    markdownH5 {fg=blue, gui="bold"},
+    markdownH6 {fg=magenta, gui="bold"},
+    htmlH1     {markdownH1},
+    htmlH2     {markdownH2},
+    htmlH3     {markdownH3},
+    htmlH4     {markdownH4},
+    htmlH5     {markdownH5},
+    htmlH6     {markdownH6},
+
     -- These groups are for the neovim tree-sitter highlights.
     -- As of writing, tree-sitter support is a WIP, group names may change.
     -- By default, most of these groups link to an appropriate Vim group,
@@ -271,9 +284,10 @@ local theme = lush(function()
     -- TSUnderline          {}, -- For text to be represented with an underline.
     -- TSTitle              {}, -- Text that is part of a title.
     -- TSLiteral            {}, -- Literal text.
-    -- TSURI                {}, -- Any URI like a link or email.
+    TSURI                {gui="underline italic", sp=blue}, -- Any URI like a link or email.
     -- TSVariable           {}, -- Any variable name that does not have another highlight.
     -- TSVariableBuiltin    {}, -- Variable names that are defined by the languages, like `this` or `self`.
+    TSTag {fg=red},
     -- }}}
 
     TabLineSeparator {fg=Normal.bg, bg=TabLineFill.bg},
